@@ -1,0 +1,37 @@
+<ion-app>
+    <ion-menu side="start">
+        <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title>
+          Menu
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="/tabs">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label>Travelling Places</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="./tabs/filter">
+          <ion-icon name="checkbox-outline" slot="start"></ion-icon>
+          <ion-label>Filter Location</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item lines="none" routerLink="./tabs/about">
+          <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+          <ion-label>About App</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+  </ion-menu>
+        <ion-router-outlet main></ion-router-outlet>      
+    
+
+</ion-app>
