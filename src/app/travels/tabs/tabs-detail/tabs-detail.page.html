@@ -3,9 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/travels/tabs/travel"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ loadPlace?.title }}</ion-title>
-    <ion-buttons slot="primary">
-    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+    <ion-button color="dark" slot="primary" (click)="delete(id)">
+      <ion-icon name="trash"></ion-icon>  
+    </ion-button>
+    <ion-button color="dark" slot="primary" (click)="edit(id, title, desc, loc)">
+      <ion-icon name="create-outline"></ion-icon>  
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -13,19 +17,19 @@
   <ion-grid no-padding>
     <ion-row>
       <ion-col no-padding>
-        <ion-img [src]="loadPlace?.imageUrl"></ion-img>
+        <ion-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQnNZvcs8h6f3gX-DxY8aFBkaJAyyikjcfbRJ5vTSok20lrSCGN&usqp=CAU"></ion-img>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <h1 text-center>{{ loadPlace?.title }}</h1>
-        <p>{{ loadPlace?.location }}</p>
+        <h1 text-center>{{ title }}</h1>
+        <p>{{ loc }}</p>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <h4>Destination Description</h4>
-        <p>{{ loadPlace?.description }}</p>
+        <h4>Description</h4>
+        <p>{{ desc }}</p>
       </ion-col>
     </ion-row>
   </ion-grid>

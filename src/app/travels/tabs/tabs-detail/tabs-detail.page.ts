@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { TabsService } from '../tabs.service';
 import { Place } from '../tabs.model';
-import { Subscriber } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PostProvider } from '../../../../providers/post-provider';
 
 @Component({
   selector: 'app-tabs-detail',
@@ -10,23 +10,39 @@ import { Subscriber } from 'rxjs';
   styleUrls: ['./tabs-detail.page.scss'],
 })
 export class TabsDetailPage implements OnInit {
-  loadPlace: Place;
+  id: number;
+  title: string;
+  loc: string;
+  desc: string;
   constructor(
     private actRoute: ActivatedRoute,
-    private tabsService: TabsService,
+    private postPvdr: PostProvider,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.actRoute.paramMap.subscribe(paramMap => {
-      if(!paramMap.has('tabsId')){
-        this.router.navigate(['/tabs']);
-        return;
-      }
+    this.actRoute.params.subscribe((data: any) =>{
+      this.id = data.id;
+      this.title = data.title;
+      this.desc = data.desc;
+      this.loc = data.loc;
+      console.log(data);
+  	});
+  }
 
-      const tabsId = paramMap.get('tabsId');
-      this.loadPlace = this.tabsService.getPlace(tabsId);
+  delete(id){
+    let body = {
+      aksi : 'delete',
+      trv_id : id
+    };
+
+    this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+      this.router.navigate(['/travels/tabs/travel']);
     });
+  }
+
+  edit(id, title, desc, loc){
+    this.router.navigate(['/travels/tabs/createtravel/' + '/' + id + '/' + title + '/' + desc + '/' + loc]);
   }
 
 }

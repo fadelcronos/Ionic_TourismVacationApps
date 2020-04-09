@@ -8,28 +8,38 @@
   <ion-row>
     <ion-col>
       <ion-item color="light">
-        <ion-label position="stacked">Destination Title</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="trv_title"></ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
       <ion-item color="light">
-        <ion-label position="stacked">Location</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea [(ngModel)]="trv_desc"></ion-textarea>
       </ion-item>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
       <ion-item color="light">
-        <ion-label position="stacked">Description</ion-label>
-        <ion-textarea></ion-textarea>
+        <ion-label position="floating">Location</ion-label>
+        <ion-input [(ngModel)]="trv_locate"></ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item color="light">
+        <ion-label position="floating">Image Link</ion-label>
+        <ion-input [(ngModel)]="trv_img"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
   <div class="ion-padding">
-    <ion-button expand="block" type="submit" class="ion-no-margin" color="danger">Submit Destination</ion-button>
+    <ion-button color="danger" expand="block" class="ion-no-margin" *ngIf="!id" (click)="createtrv()">Create Destination</ion-button>
+    <ion-button color="danger" expand="block" class="ion-no-margin" *ngIf="id>=1" (click)="updatetrv()">Update</ion-button>
   </div>
 </ion-content>

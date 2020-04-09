@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
   },
   {
-    path: 'tabs-detail',
+    path: 'trav-detail/:id/:title/:desc/:loc',
     loadChildren: () => import('./tabs-detail/tabs-detail.module').then( m => m.TabsDetailPageModule)
   },
   {

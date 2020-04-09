@@ -34,6 +34,16 @@ const routes: Routes = [
               ]
           },
           {
+            path: 'createtravel/:id/:title/:desc/:loc',
+            children: [
+                {
+                    path: '',
+                    loadChildren: () => import('../travels/create-travel/create-travel.module').then(m => m.CreateTravelPageModule)
+                },
+                
+            ]
+        },
+          {
               path: '',
               redirectTo: '/travels/tabs/travel',
               pathMatch: 'full'

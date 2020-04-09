@@ -11,22 +11,22 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" text-center>
-        <ion-card *ngFor="let place of loadedPlaces.slice(0)" color="dark">
+        <ion-card *ngFor="let trav of travs" color="dark">
           <ion-card-header>
-            <ion-img [src]="place.imageUrl"></ion-img>
+            <ion-img [src]="trav.trv_img"></ion-img>
           </ion-card-header>
           
           <ion-card-content>
-            <ion-card-title>{{ place.title }}</ion-card-title>
-            <p>{{ place.description }}</p><br>
-            <p>{{ place.location }}</p>
+            <ion-card-title>{{ trav.trv_title }}</ion-card-title><br>
+            <p>{{ trav.trv_thumb }}...</p><br>
+            <p>{{ trav.trv_locate }}</p>
           </ion-card-content>
           
           <div class="ion-text-center">
             <ion-button slot="primary"
               fill="clear"
               color="danger"
-              [routerLink]="['/travels/tabs/travel/travel-detail',place.id]"
+              (click) ="seedetail(trav.trv_id, trav.trv_title, trav.trv_desc, trav.trv_locate)"
             >
               View
             </ion-button>
